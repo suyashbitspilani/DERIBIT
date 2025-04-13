@@ -3,7 +3,7 @@ import threading
 import time
 import json
 
-SERVER_URL = "ws://localhost:9002"  # 👈 Update if you use a different port
+SERVER_URL = "ws://localhost:9002"  
 
 def on_message(ws, message):
     try:
@@ -34,4 +34,4 @@ if __name__ == "__main__":
                                 on_error=on_error,
                                 on_close=on_close)
     ws.run_forever()
-// Placeholder for client.py
+
