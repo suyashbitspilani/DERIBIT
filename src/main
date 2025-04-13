@@ -1,0 +1,28 @@
+#include <iostream>
+#include "core/order_manager.h"
+#include "ws/websocket_server.h"
+#include "utils/logger.h"
+
+int main() {
+    Logger::init();
+
+    std::cout << "🚀 Starting DeriBot..." << std::endl;
+
+    // Initialize Order Manager
+    OrderManager orderManager;
+
+    // Start WebSocket server (for clients to subscribe & get orderbook updates)
+    WebSocketServer wsServer(9002, &orderManager);
+    wsServer.start();
+
+    // Main trading logic or CLI loop could go here
+    std::cout << "🟢 DeriBot running. Press Ctrl+C to exit." << std::endl;
+
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+        // You can plug trading strategies or polling here
+    }
+
+    return 0;
+}
+// Placeholder for src/main.cpp
